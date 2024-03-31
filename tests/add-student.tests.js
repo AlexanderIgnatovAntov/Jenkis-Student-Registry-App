@@ -3,13 +3,13 @@ const fetch = require('node-fetch');
 
 suite('Add Students page', function() {
   test('Page title', async function() {
-    let res = await fetch("http://localhost:8081/add-student");
+    let res = await fetch("http://localhost:8888/add-student");
     let body = await res.text();
     assert.ok(body.includes("<h1>Register New Student</h1>"));
   });
 
   test('Students HTML form', async function() {
-    let res = await fetch("http://localhost:8081/add-student");
+    let res = await fetch("http://localhost:8888/add-student");
     let body = await res.text();
     
     let nameFieldFound = body.includes('<input id="name" type="text" name="name"/>');
@@ -24,7 +24,7 @@ suite('Add Students page', function() {
 
   test('Add valid student', async function() {
     let res = await fetch(
-      "http://localhost:8081/add-student",
+      "http://localhost:8888/add-student",
       {
         method: 'POST',
         headers: {
@@ -41,7 +41,7 @@ suite('Add Students page', function() {
 
   test('Add invalid student', async function() {
      let res = await fetch(
-      "http://localhost:8081/add-student",
+      "http://localhost:8888/add-student",
       {
         method: 'POST',
         headers: {
